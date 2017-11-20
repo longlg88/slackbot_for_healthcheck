@@ -2,5 +2,5 @@
 venv/
 
 # spcific file
-token
-bot_id
+health_check/token
+health_check/bot_id
