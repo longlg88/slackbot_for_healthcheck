@@ -4,6 +4,10 @@ import os
 import time
 from slackclient import SlackClient
 
+######
+# this program is slack server so it runs background(if it isn't disturbing)
+# 'handle_command' function is used for handling results in slack app
+######
 def handle_command(channel):
 	response='hello world!'
 	slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
