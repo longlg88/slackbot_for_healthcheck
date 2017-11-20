@@ -1,2 +1,6 @@
 #specific dir
 venv/
+
+# spcific file
+token
+bot_id
