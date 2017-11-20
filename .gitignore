@@ -1,6 +1,6 @@
 #specific dir
 venv/
 
-# spcific file
+# specific file
 health_check/token
 health_check/bot_id
