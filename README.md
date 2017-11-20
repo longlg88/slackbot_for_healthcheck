@@ -11,9 +11,11 @@ For using this server...
 5. pip install gunicorn
 6. pip freeze > requirements.txt
 7. touch .gitignore
-8. #specific dir
+8. 
+   '''
+   #specific dir
    venv/
    # specific file
    ...
    ...
- 
+   '''
