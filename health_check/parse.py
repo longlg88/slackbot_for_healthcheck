@@ -24,11 +24,11 @@ def get_hostid_env1():
 		with open(DIR_JSON+"/host_env1_ids.json",'w') as host_make_file:
 			#json.dump(res_host_ids_env1.json(), host_make_file, ensure_ascii=False, indent='\t', sort_keys=True)
 			json.dump(res_host_ids_env1.json(), host_make_file, encoding='utf-8')
-			print(res_host_ids_env1.json())
+			#print(res_host_ids_env1.json())
 		with open(DIR_JSON+"/host_env1_ids.json") as host_data_file:
 			host_env1 = json.load(host_data_file)
 
-		return host_env1['dto']['result']
+		return host_env1
 		#host_env1_len=len(host_env1['dto']['result'])
 		#print('host env1 length = ',host_env1_len)
 		#for x in range(0, host_env1_len):

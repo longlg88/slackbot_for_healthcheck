@@ -4,6 +4,7 @@ import os
 import time
 from slackclient import SlackClient
 import parse
+#import match
 
 ######
 # this program is slack server so it runs background(if it isn't disturbing)
@@ -11,9 +12,14 @@ import parse
 ######
 def handle_command(channel):
 	#response='hello world!'
-	host_env1_len=str(len(parse.get_hostid_env1()))
-	
-	response='length of host env1 id = '+ host_env1_len
+	host_env1=parse.get_hostid_env1()
+	host_env1_len=len(host_env1['dto']['result'])
+	host_env1_id=[]
+	for x in range(0, host_env1_len):
+		host_env1_id.append(host_env1['dto']['result'][x])
+	print(host_env1_id)
+	#match.get_live_host_env1(host_env1_id)
+	response='Sysmanager agent live check \n'+''
 	slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
 
 def parse_slack_output(slack_rtm_output):
