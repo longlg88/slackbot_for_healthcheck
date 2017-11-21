@@ -1,5 +1,6 @@
 #specific dir
 venv/
+json/
 
 # specific file
 health_check/token
