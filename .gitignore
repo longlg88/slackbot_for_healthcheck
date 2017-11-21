@@ -5,3 +5,5 @@ json/
 # specific file
 health_check/token
 health_check/bot_id
+health_check/host_env1_info
+health_check/host_env2_info

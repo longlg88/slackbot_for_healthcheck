@@ -3,13 +3,17 @@
 import os
 import time
 from slackclient import SlackClient
+import parse
 
 ######
 # this program is slack server so it runs background(if it isn't disturbing)
 # 'handle_command' function is used for handling results in slack app
 ######
 def handle_command(channel):
-	response='hello world!'
+	#response='hello world!'
+	host_env1_len=str(len(parse.get_hostid_env1()))
+	
+	response='length of host env1 id = '+ host_env1_len
 	slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
 
 def parse_slack_output(slack_rtm_output):
@@ -39,7 +43,10 @@ if __name__=="__main__":
 #			if 'name' in user and user.get('name') == BOT_NAME:
 #				print("Bot ID for '" + user['name'] + "' is " + user.get('id'))
 #################################
+#################################
+
 	if slack_client.rtm_connect():
+		######################### waiting for client sending message 1s cycle
 		print(slack_client.rtm_read())
 		READ_WEBSOCKET_DELAY=1
 		print("start bot!! BOT NAME is " + BOT_NAME)
