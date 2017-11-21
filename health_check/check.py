@@ -11,14 +11,25 @@ import match
 # 'handle_command' function is used for handling results in slack app
 ######
 def handle_command(channel):
-	host_env1=parse.get_hostid_env1()
+	## Parsing host live json for sysmanager api(ENV 1/Release environment)
+	host_env1=parse.get_hostid_env(1)
 	host_env1_len=len(host_env1['dto']['result'])
 	host_env1_id=[]
 	for x in range(0, host_env1_len):
 		host_env1_id.append(host_env1['dto']['result'][x])
 
-	env1_res=match.get_live_host_env1(host_env1_id)
-	response='Sysmanager agent live check \n'+ 'Release Environment(env1)\n'+env1_res
+	## Parsing host live json for sysmanager api(ENV 2/Release environment)
+	host_env2=parse.get_hostid_env(2)
+	host_env2_len=len(host_env2['dto']['result'])
+	host_env2_id=[]
+	for y in range(0, host_env2_len):
+		host_env2_id.append(host_env2['dto']['result'][y])
+	#print('here host_env1_id = ',host_env1_id)
+	#print('here host_env2_id = ',host_env2_id)
+	env1_res=match.get_live_host_env(1, host_env1_id)
+	env2_res=match.get_live_host_env(2, host_env2_id)
+	response='### Sysmanager agent live check ### \n\n'+ '### This unrelated with host active ### \n\n'+ 'Release Environment(env1)\n'+env1_res + '\n\n'+'Development Environment(env2)\n'+env2_res
+
 	slack_client.api_call("chat.postMessage", channel=channel, text=response, as_user=True)
 
 def parse_slack_output(slack_rtm_output):
